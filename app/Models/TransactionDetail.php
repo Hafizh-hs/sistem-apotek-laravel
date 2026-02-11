@@ -12,7 +12,6 @@ class TransactionDetail extends Model
     // Nama tabel di database
     protected $table = 'transaction_details';
 
-    // Kolom yang diizinkan untuk diisi secara massal
     protected $fillable = [
         'transaction_id',
         'medicine_id',
@@ -22,17 +21,12 @@ class TransactionDetail extends Model
         'subtotal'
     ];
 
-    /**
-     * Relasi ke Header Transaksi (Induk)
-     */
+    // relasi
     public function transaction()
     {
         return $this->belongsTo(Transaction::class);
     }
 
-    /**
-     * Relasi ke data Obat
-     */
     public function medicine()
     {
         return $this->belongsTo(Medicine::class);

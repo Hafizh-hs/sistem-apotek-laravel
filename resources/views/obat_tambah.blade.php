@@ -14,15 +14,15 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="space-y-3">
                     <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Kode Barcode</label>
-                    <input type="text" name="kode_barcode" id="input_barcode" 
+                    <input type="text" name="kode_barcode" id="input_barcode"
                         oninput="cariObatOtomatis(this.value)"
-                        class="w-full bg-slate-950 border border-slate-800 text-slate-200 p-4 rounded-2xl focus:ring-2 focus:ring-emerald-500 outline-none transition-all font-mono" 
+                        class="w-full bg-slate-950 border border-slate-800 text-slate-200 p-4 rounded-2xl focus:ring-2 focus:ring-emerald-500 outline-none transition-all font-mono"
                         placeholder="Scan atau ketik..." autofocus required autocomplete="off">
                 </div>
 
                 <div class="space-y-3">
                     <label class="block text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Nama Produk</label>
-                    <input type="text" name="nama_obat" id="input_nama" 
+                    <input type="text" name="nama_obat" id="input_nama"
                         class="w-full bg-slate-950 border border-slate-800 text-slate-200 p-4 rounded-2xl focus:ring-2 focus:ring-emerald-500 outline-none transition-all font-bold" required>
                 </div>
 
@@ -61,8 +61,8 @@
         barcode = barcode.trim();
         console.log("Mendeteksi Barcode: " + barcode);
 
-        // SEKARANG: Langsung cari meski baru 1 atau 3 angka
-        if (barcode.length >= 1) { 
+        //    filter barcode
+        if (barcode.length >= 1) {
             const urlBasis = "{{ url('/obat/cek-barcode') }}";
             const urlLengkap = urlBasis + "/" + barcode;
 
@@ -76,15 +76,15 @@
                 })
                 .then(data => {
                     console.log("Respon Database:", data);
-                    
+
                     if (data.success) {
                         document.getElementById('input_nama').value = data.nama_obat;
                         document.getElementById('input_modal').value = data.harga_modal;
                         document.getElementById('input_jual').value = data.harga_jual;
-                        
+
                         // Fokus otomatis ke stok agar admin cepat kerjanya
                         document.getElementById('input_stok').focus();
-                        
+
                         // Beri tanda warna hijau pada border nama agar tahu data ditemukan
                         document.getElementById('input_nama').style.borderColor = "#10b981";
                     } else {

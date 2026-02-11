@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
-use App\Models\Medicine; // Tambahkan ini agar controller kenal dengan tabel obat
+use App\Models\Medicine;
 use Illuminate\Support\Facades\DB;
 
 class MedicineController extends Controller
@@ -24,14 +24,13 @@ class MedicineController extends Controller
         return view('obat_tambah');
     }
 
-    // app/Http/Controllers/MedicineController.php
     public function simpan(Request $request)
     {
         // 1. Cek apakah barcode sudah ada
         $obatAda = Medicine::where('kode_barcode', $request->kode_barcode)->first();
 
         if ($obatAda) {
-            // Jika barcode ada tapi NAMA BEDA -> Gagalkan (ini error input)
+            // Jika barcode ada tapi NAMA BEDA -> Gagalkan
             if ($obatAda->nama_obat !== $request->nama_obat) {
                 return redirect()->back()
                     ->withErrors(['kode_barcode' => 'Barcode ini sudah digunakan oleh produk lain: ' . $obatAda->nama_obat])
@@ -50,7 +49,7 @@ class MedicineController extends Controller
 
     public function edit($id)
     {
-        $obat = Medicine::find($id); // cari obat berdasarkan id
+        $obat = Medicine::find($id);
         return view('obat_edit', compact('obat'));
     }
 
@@ -104,7 +103,7 @@ class MedicineController extends Controller
                 'total_harga' => $request->total_harga,
                 'bayar'       => $request->bayar,
                 'kembali'     => $request->kembali,
-                // Jika ada kolom diskon_final, tambahkan di sini. Jika tidak, hapus baris ini.
+                
             ]);
 
             // 3. Simpan Detail Item (Looping)
@@ -131,7 +130,7 @@ class MedicineController extends Controller
             return redirect('/kasir/nota/' . $transaksi->id);
         } catch (\Exception $e) {
             DB::rollback();
-            // Tampilkan pesan error jika gagal simpan
+            // notif error jika gagal simpan
             return "Gagal menyimpan transaksi: " . $e->getMessage();
         }
     }
@@ -223,7 +222,6 @@ class MedicineController extends Controller
         return view('kasir_riwayat', compact('riwayat'));
     }
 
-// app/Http/Controllers/MedicineController.php
 public function cekBarcode($barcode)
 {
     // Cari obat berdasarkan barcode

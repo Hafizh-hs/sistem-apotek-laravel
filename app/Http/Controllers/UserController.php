@@ -54,7 +54,7 @@ class UserController extends Controller
         }
 
         // Update password baru
-        /** @var \App\Models\User $user */ // <-- Tambahkan baris ini!
+        /** @var \App\Models\User $user */
         $user = auth()->user();
 
         $user->update([
