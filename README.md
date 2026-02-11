@@ -17,7 +17,7 @@ Apotek Pro adalah sistem manajemen apotek berbasis web yang dirancang untuk meng
 
 ## 🛠️ Teknologi yang Digunakan
 
-* **Framework:** [Laravel 11](https://laravel.com)
+* **Framework:** [Laravel 10](https://laravel.com)
 * **Database:** MySQL
 * **Frontend:** Tailwind CSS & Alpine.js
 * **Icons:** Heroicons
