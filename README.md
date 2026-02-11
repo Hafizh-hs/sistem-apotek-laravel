@@ -26,7 +26,7 @@ Apotek Pro adalah sistem manajemen apotek berbasis web yang dirancang untuk meng
 
 1.  Clone repository ini:
     ```bash
-    git clone [https://github.com/username-anda/nama-repo.git](https://github.com/username-anda/nama-repo.git)
+    git clone [https://github.com/Hafizh-hs/sistem-apotek-laravel.git](https://github.com/Hafizh-hs/sistem-apotek-laravel.git)
     ```
 2.  Masuk ke folder proyek:
     ```bash
@@ -54,4 +54,4 @@ Apotek Pro adalah sistem manajemen apotek berbasis web yang dirancang untuk meng
     ```
 
 ---
-© 2026 **Apotek Pro** - Built with Love by [Hafizh]
+© 2026 **Apotek Pro** - Built by [Hafizh]
